@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+$bg-color:#d6d9e2;
+$cal-color:#313745;
+$color1:#586170;
+$btn2:#ea7523;
+$btn1:#5e697d;
+$btn3:#36394b;
+$font1: 'Roboto',
+sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font1;
+}
+
+body {
+    .outer-most {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $bg-color;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+        position: relative;
+        z-index: 10;
+        .calculater {
+            padding: 10px;
+            padding-bottom: 30px;
+            width: 100vw;
+            max-width: 480px;
+            height: 100vh;
+            max-height: 750px;
+            border-radius: 40px;
+            min-height: 600px;
+            background: $cal-color;
+            position: relative;
+            .icon {
+                width: 70px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $color1;
+                border-radius: 25px 40% 40% 0;
+            }
+            .screen {
+                width: 100%;
+                height: 25%;
+                margin-top: 10%;
+                color: white;
+                font-family: sans-serif;
+                position: relative;
+                p {
+                    position: absolute;
+                    right: 0;
+                    bottom: 70px;
+                    display: block;
+                    font-size: 20px;
+                }
+                h1 {
+                    position: absolute;
+                    right: 0;
+                    bottom: 20px;
+                    display: block;
+                    font-size: 40px;
+                }
+            }
+            .number-pad {
+                height: 60%;
+                width: 100%;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                .key {
+                    width: 100%;
+                    height: width;
+                    border-radius: 20px;
+                    display: inline-block;
+                    font-size: 30px;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: $btn3;
+                    border: 5px solid $btn3;
+                    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, .1), inset -8px -8px 10px 0 rgba(0, 0, 0, .1);
+                }
+                #zero {
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                }
+                 :nth-child(-n+3) {
+                    background: $btn1;
+                    border: 5px solid $btn1;
+                    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, .1), inset -8px -8px 10px 0 rgba(0, 0, 0, .1);
+                }
+                 :nth-child(4n),
+                 :last-child {
+                    border: 5px solid $btn2;
+                    box-shadow: inset 8px 8px 10px 0 rgba(0, 0, 0, .1), inset -8px -8px 10px 0 rgba(0, 0, 0, .1);
+                    background: $btn2;
+                }
+            }
+        }
+        .calculater::after {
+            content: "";
+            position: absolute;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            top: -10%;
+            z-index: -1;
+            border-radius: 50%;
+            border: 10px solid $btn2;
+        }
+    }
+}
+
+@media screen and (max-width:470px) {
+    body {
+        .outer-most {
+            .calculater {
+                border-radius: unset;
+            }
+        }
+    }
+}
